@@ -39,9 +39,9 @@ public class Entity : MonoBehaviour // базовый класс всего
         //if (isRotated) direction[0] *= -1;
         if(slideTimer > 0) slideTimer -= Time.deltaTime;
         entityRidgidBody.velocity = new Vector3(direction[0] * entitySpeed, direction[1] * entitySpeed, 0);
-        Animations(direction);
+        MovementAnimations(direction);
     }
-    protected void Animations(float[] direction)
+    protected void MovementAnimations(float[] direction)
     {
         if (direction[0] != 0)
         {
@@ -61,9 +61,8 @@ public class Entity : MonoBehaviour // базовый класс всего
     {
         if (slideTimer <= 0) animations.SetTrigger("Slide");
     }
-
     protected void Die() => Destroy(gameObject);
-    public void GetDamage(int damage) => stats.Health = stats.Health - damage;
+    public virtual void GetDamage(int damage) => stats.Health = stats.Health - damage;
     public void StartSlide() 
     { 
         IsSlided = false;
@@ -75,6 +74,7 @@ public class Entity : MonoBehaviour // базовый класс всего
         slideTimer = slideTimerMaxValue;
         entitySpeed -= slideBoost;
     }
+
     
 
 }
