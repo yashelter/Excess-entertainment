@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Player : Entity // класс игрока
 {
+
+    [HideInInspector]
     public HealthBar healthBar;
-    public PlayerWeapon weapon;
+    private PlayerWeapon weapon;
 
     protected override void Start()
     {
-        base.Start(); // что-то явно не так надо почитать про ООП
-        // что бы получить статы из других скриптов использовать stats.getStats(); получает => int[] 
+        base.Start();
         healthBar = FindObjectOfType<HealthBar>();
         healthBar.SetMaxHealth(100);
         weapon = FindObjectOfType<PlayerWeapon>();

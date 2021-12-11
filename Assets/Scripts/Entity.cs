@@ -7,7 +7,8 @@ public class Entity : MonoBehaviour // базовый класс всего
    
     public Transform entityTransform { get; private set; }
     public Rigidbody2D entityRidgidBody { get; private set; }
-    public Stats stats { get; protected set; }
+
+    public Stats stats;
     
     protected Animator animations;
     private InGameManager gameManager;
@@ -18,7 +19,6 @@ public class Entity : MonoBehaviour // базовый класс всего
     private float slideTimerMaxValue = 1f; 
 
     public bool IsSlided { get => isSlided; set => isSlided = value; }
-    private float entitySpeed = 2f;
     private float slideBoost = 1.3f;
 
     protected virtual void Start()
@@ -27,7 +27,7 @@ public class Entity : MonoBehaviour // базовый класс всего
         gameManager = FindObjectOfType<InGameManager>();
         animations = GetComponent<Animator>();
         entityRidgidBody = GetComponent<Rigidbody2D>();
-        stats = new Stats(100, 100); // должны ставиться сохранённые данные
+       // stats = new Stats(); // должны ставиться сохранённые данные
         isRotated = false;
         IsSlided = true;
     }
@@ -36,9 +36,8 @@ public class Entity : MonoBehaviour // базовый класс всего
     {   
         if (!gameManager.gameActive) return;
         if ((direction[0] < 0 && !isRotated) || (direction[0] > 0 && isRotated)) Flip();
-        //if (isRotated) direction[0] *= -1;
         if(slideTimer > 0) slideTimer -= Time.deltaTime;
-        entityRidgidBody.velocity = new Vector3(direction[0] * entitySpeed, direction[1] * entitySpeed, 0);
+        entityRidgidBody.velocity = new Vector3(direction[0] * stats.speed, direction[1] * stats.speed, 0);
         MovementAnimations(direction);
     }
     protected void MovementAnimations(float[] direction)
@@ -66,13 +65,13 @@ public class Entity : MonoBehaviour // базовый класс всего
     public void StartSlide() 
     { 
         IsSlided = false;
-        entitySpeed += slideBoost;
+        stats.speed += slideBoost;
     }
     public void EndSlide() 
     {
         IsSlided = true;
         slideTimer = slideTimerMaxValue;
-        entitySpeed -= slideBoost;
+        stats.speed -= slideBoost;
     }
 
     
