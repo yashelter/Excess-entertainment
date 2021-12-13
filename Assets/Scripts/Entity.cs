@@ -55,6 +55,7 @@ public class Entity : MonoBehaviour // базовый класс всего
     {
         isRotated = !isRotated;
         entityTransform.localScale = new Vector3(-entityTransform.localScale.x, entityTransform.localScale.y, 0);
+        Debug.Log(entityTransform.localScale);
     }
     protected void Slide()
     {
