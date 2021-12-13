@@ -61,7 +61,7 @@ public class Entity : MonoBehaviour // базовый класс всего
         if (slideTimer <= 0) animations.SetTrigger("Slide");
     }
     protected void Die() => Destroy(gameObject);
-    public virtual void GetDamage(int damage) => stats.Health = stats.Health - damage;
+    public virtual void GetDamage(float damage) => stats.Health = stats.Health - damage;
     public void StartSlide() 
     { 
         IsSlided = false;

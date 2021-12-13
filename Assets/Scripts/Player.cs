@@ -30,10 +30,11 @@ public class Player : Entity // класс игрока
                            // поэтому каждого забамажим ровно 1 раз, во время атаки фризить поворот(и движения наверно тоже)
                            // !!сделать при появлении спрайтов
         }
+        Debug.Log(stats.getHealth());
     }
     private void FixedUpdate()
     {
-        healthBar.SetHealth(stats.getHealth());
+        healthBar.SetHealth((int)stats.getHealth());
     }
     private void StartAttack()
     {

@@ -19,10 +19,9 @@ public class Enemy : Entity
         thisTransform = GetComponent<Transform>();
     }
 
-    public override void GetDamage(int x)
+    public override void GetDamage(float x)
     {
         base.GetDamage(x);
-        Debug.Log(stats.Health);
     }
     protected void FixedUpdate()
     {
