@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - ToxicGenerator
+  - ToxicZoneTile
   layers:
   - Default
   - TransparentFX
