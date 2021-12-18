@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Player : Entity // класс игрока
 {
+
+    [HideInInspector]
     public HealthBar healthBar;
+    private PlayerWeapon weapon;
 
     protected override void Start()
     {
-        base.Start(); // что-то явно не так надо почитать про ООП
-        // что бы получить статы из других скриптов использовать stats.getStats(); получает => int[] 
+        base.Start();
         healthBar = FindObjectOfType<HealthBar>();
         healthBar.SetMaxHealth(100);
-        
+        weapon = FindObjectOfType<PlayerWeapon>();
+
     }
 
     private void Update()
@@ -21,9 +24,20 @@ public class Player : Entity // класс игрока
         // должна быть логика влияния предметов на статы? или решить по другому
         Move(input);
         if (Input.GetKey(KeyCode.Space) && IsSlided) Slide();
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            StartAttack(); // в аниматоре нужно остановить атаку, работает на входе обектов в зону поражения
+                           // поэтому каждого забамажим ровно 1 раз, во время атаки фризить поворот(и движения наверно тоже)
+                           // !!сделать при появлении спрайтов
+        }
+        
     }
     private void FixedUpdate()
     {
-        healthBar.SetHealth(stats.getHealth());
+        healthBar.SetHealth((int)stats.getHealth());
+    }
+    private void StartAttack()
+    {
+        weapon.StartAttack();
     }
 }
