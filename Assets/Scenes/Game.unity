@@ -1969,5 +1969,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomAllDoors
       objectReference: {fileID: 0}
+    - target: {fileID: 6689389777519469510, guid: d6cb70fa96b2e4844ae50c9bceadb229, type: 3}
+      propertyPath: changePosCamera.x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6689389777519469510, guid: d6cb70fa96b2e4844ae50c9bceadb229, type: 3}
+      propertyPath: changePosCamera.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6689389777519469510, guid: d6cb70fa96b2e4844ae50c9bceadb229, type: 3}
+      propertyPath: changePosPlayer.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6689389777519469510, guid: d6cb70fa96b2e4844ae50c9bceadb229, type: 3}
+      propertyPath: changePosPlayer.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6cb70fa96b2e4844ae50c9bceadb229, type: 3}
