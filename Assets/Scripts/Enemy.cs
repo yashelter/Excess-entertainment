@@ -7,6 +7,11 @@ public class Enemy : Entity
     public EnemyType ThisType;
     public Transform playerTransform;
     public Transform thisTransform;
+
+    public float Hitpoints;
+    public float MaxHitpoints = 5;
+    public HealthBarEnemy Healthbar;
+
     public enum EnemyType
     {
         minion, shooter, stayer
@@ -14,6 +19,9 @@ public class Enemy : Entity
     };
     protected override void Start()
     {
+        Hitpoints = MaxHitpoints;
+        Healthbar.SetHealth(Hitpoints, MaxHitpoints);
+
         base.Start();
         playerTransform = FindObjectOfType<Player>().gameObject.transform;
         thisTransform = GetComponent<Transform>();
