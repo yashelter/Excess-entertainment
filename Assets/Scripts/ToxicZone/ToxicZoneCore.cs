@@ -19,7 +19,7 @@ public class ToxicZoneCore : MonoBehaviour
         tileMap = new GameObject[size,size];
         ClearZone();
         GenerateZone();
-        //StartCoroutine(ReGenerate());
+        StartCoroutine(ReGenerate());
     }
 
     private IEnumerator ReGenerate()

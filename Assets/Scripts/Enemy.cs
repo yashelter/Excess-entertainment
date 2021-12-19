@@ -8,36 +8,31 @@ public class Enemy : Entity
     public Transform playerTransform;
     public Transform thisTransform;
 
-    public float Hitpoints;
-    public float MaxHitpoints = 5;
     public HealthBarEnemy Healthbar;
 
     public enum EnemyType
     {
         minion, shooter, stayer
-        
+
     };
     protected override void Start()
     {
-        Hitpoints = MaxHitpoints;
-        Healthbar.SetHealth(Hitpoints, MaxHitpoints);
-
-        Hitpoints = MaxHitpoints;
-        
-
         base.Start();
         playerTransform = FindObjectOfType<Player>().gameObject.transform;
         thisTransform = GetComponent<Transform>();
+
+        stats.Health = stats.MaxHealth;
+        Healthbar.SetHealth(stats.Health, stats.MaxHealth);
     }
 
     public override void GetDamage(float x)
     {
         base.GetDamage(x);
+        Healthbar.SetHealth(stats.Health, stats.MaxHealth);
     }
     protected void FixedUpdate()
     {
         MinionEngine();
-        Healthbar.SetHealth(Hitpoints, MaxHitpoints);
     }
     public void MinionEngine()
     {

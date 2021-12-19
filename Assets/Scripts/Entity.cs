@@ -9,7 +9,6 @@ public class Entity : MonoBehaviour // базовый класс всего
     public Rigidbody2D entityRidgidBody { get; private set; }
 
     public Stats stats;
-    
     protected Animator animations;
     private InGameManager gameManager;
 
@@ -20,6 +19,7 @@ public class Entity : MonoBehaviour // базовый класс всего
 
     public bool IsSlided { get => isSlided; set => isSlided = value; }
     private float slideBoost = 1.3f;
+    
 
     protected virtual void Start()
     {
@@ -32,17 +32,17 @@ public class Entity : MonoBehaviour // базовый класс всего
         IsSlided = true;
     }
 
-    protected void Move(float[] direction)
+    protected virtual void Move(float[] direction)
     {   
         if (!gameManager.gameActive) return;
-        if ((direction[0] < 0 && !isRotated) || (direction[0] > 0 && isRotated)) Flip();
+        if (((direction[0] < 0 && !isRotated) || (direction[0] > 0 && isRotated))) Flip();
         if(slideTimer > 0) slideTimer -= Time.deltaTime;
         entityRidgidBody.velocity = new Vector3(direction[0] * stats.speed, direction[1] * stats.speed, 0);
         MovementAnimations(direction);
     }
     protected void MovementAnimations(float[] direction)
     {
-        if (direction[0] != 0)
+        if (direction[0] != 0 || direction[1] != 0)
         {
             animations.SetBool("isRunning", true);
         }
@@ -51,7 +51,7 @@ public class Entity : MonoBehaviour // базовый класс всего
             animations.SetBool("isRunning", false);
         }
     }
-    protected void Flip()
+    protected virtual void Flip()
     {
         isRotated = !isRotated;
         entityTransform.localScale = new Vector3(-entityTransform.localScale.x, entityTransform.localScale.y, 0);
@@ -61,7 +61,14 @@ public class Entity : MonoBehaviour // базовый класс всего
         if (slideTimer <= 0) animations.SetTrigger("Slide");
     }
     protected void Die() => Destroy(gameObject);
-    public virtual void GetDamage(float damage) => stats.Health = stats.Health - damage;
+    public virtual void GetDamage(float damage) 
+    { 
+        stats.Health = stats.Health - damage; 
+        if (stats.Health == 0)
+        {
+            Destroy(gameObject);
+        }
+    }
     public void StartSlide() 
     { 
         IsSlided = false;

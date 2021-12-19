@@ -38,6 +38,17 @@ public class Player : Entity // класс игрока
     }
     private void StartAttack()
     {
+        animations.SetTrigger("Attack");
+        weapon.PlaySound();
+    }
+    public void GiveDamage()
+    {
         weapon.StartAttack();
     }
+    public void EndAttack()
+    {
+        weapon.EndAttack();
+    }
+
+
 }
