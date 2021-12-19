@@ -20,7 +20,7 @@ public class Enemy : Entity
     protected override void Start()
     {
         Hitpoints = MaxHitpoints;
-        Healthbar.SetHealth(Hitpoints, MaxHitpoints);
+        
 
         base.Start();
         playerTransform = FindObjectOfType<Player>().gameObject.transform;
@@ -34,6 +34,7 @@ public class Enemy : Entity
     protected void FixedUpdate()
     {
         MinionEngine();
+        Healthbar.SetHealth(Hitpoints, MaxHitpoints);
     }
     public void MinionEngine()
     {
