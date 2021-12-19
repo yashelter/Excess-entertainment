@@ -20,6 +20,9 @@ public class Enemy : Entity
     protected override void Start()
     {
         Hitpoints = MaxHitpoints;
+        Healthbar.SetHealth(Hitpoints, MaxHitpoints);
+
+        Hitpoints = MaxHitpoints;
         
 
         base.Start();
