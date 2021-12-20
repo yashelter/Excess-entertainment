@@ -39,9 +39,25 @@ public class ToxicZoneCore : MonoBehaviour
         {
             for (int i = 0; i < size; i++)
             {
-                 tileMap[j, i] = Instantiate(tile, new Vector2(position[0], position[1]), Quaternion.identity);
-                 tileMap[j, i].GetComponent<ToxicZoneTile>().parent = gameObject;
-                 position[0] += tileSize;
+                var hits = Physics2D.BoxCastAll(zoneStart.position, tile.transform.localScale, 0, new Vector3(position[0], position[1]) - zoneStart.position);
+                var hasWallOnPath = false;
+
+                for (int k = 0; k < hits.Length; k++)
+                {
+                    if (hits[k].collider.CompareTag("Wall"))
+                    {
+                        hasWallOnPath = true;
+                        break;
+                    }
+                }
+
+                if (!hasWallOnPath)
+                {
+                    tileMap[j, i] = Instantiate(tile, new Vector2(position[0], position[1]), Quaternion.identity);
+                    tileMap[j, i].GetComponent<ToxicZoneTile>().parent = gameObject;
+                }
+
+                position[0] += tileSize;
             }
             position[1] = position[1] - tileSize;
             position[0] = positionStart[0];
