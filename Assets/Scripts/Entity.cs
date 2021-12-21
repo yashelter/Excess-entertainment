@@ -37,7 +37,8 @@ public class Entity : MonoBehaviour // базовый класс всего
         if (!gameManager.gameActive) return;
         if (((direction[0] < 0 && !isRotated) || (direction[0] > 0 && isRotated))) Flip();
         if(slideTimer > 0) slideTimer -= Time.deltaTime;
-        entityRidgidBody.velocity = new Vector3(direction[0] * stats.speed, direction[1] * stats.speed, 0);
+        //entityRidgidBody.velocity = new Vector3(direction[0] * stats.speed, direction[1] * stats.speed, 0);
+        entityTransform.Translate(new Vector3(direction[0] * stats.speed * Time.deltaTime * .5f, direction[1] * stats.speed * Time.deltaTime * .5f, 0));
         MovementAnimations(direction);
     }
     protected void MovementAnimations(float[] direction)
@@ -60,13 +61,13 @@ public class Entity : MonoBehaviour // базовый класс всего
     {
         if (slideTimer <= 0) animations.SetTrigger("Slide");
     }
-    protected void Die() => Destroy(gameObject);
+    protected virtual void Die() => Destroy(gameObject);
     public virtual void GetDamage(float damage) 
     { 
         stats.Health = stats.Health - damage; 
         if (stats.Health == 0)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
     public void StartSlide() 

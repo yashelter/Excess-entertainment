@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Entity // класс игрока
 {
@@ -32,6 +33,10 @@ public class Player : Entity // класс игрока
         }
         
     }
+    protected override void Die()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     private void FixedUpdate()
     {
         healthBar.SetHealth((int)stats.getHealth());
@@ -49,6 +54,7 @@ public class Player : Entity // класс игрока
     {
         weapon.EndAttack();
     }
+   
 
 
 }

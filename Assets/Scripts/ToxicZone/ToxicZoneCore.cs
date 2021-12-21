@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ToxicZoneCore : MonoBehaviour
 {
+    
     public GameObject tile;
     public Transform zoneStart;
 
+    public float zoneDamage = .1f;
     public int size = 5;
 
     public float tileSize = 1f;
@@ -15,6 +17,7 @@ public class ToxicZoneCore : MonoBehaviour
 
     void Start()
     {
+        tile.GetComponent<ToxicZoneTile>().damage = zoneDamage;
         zoneStart = GetComponent<Transform>();
         tileMap = new GameObject[size,size];
         ClearZone();
@@ -26,7 +29,7 @@ public class ToxicZoneCore : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             ClearZone();
             GenerateZone();
         }
@@ -41,21 +44,25 @@ public class ToxicZoneCore : MonoBehaviour
             {
                 var hits = Physics2D.BoxCastAll(zoneStart.position, tile.transform.localScale, 0, new Vector3(position[0], position[1]) - zoneStart.position);
                 var hasWallOnPath = false;
-
+                Barier b = null;
                 for (int k = 0; k < hits.Length; k++)
                 {
                     if (hits[k].collider.CompareTag("Wall"))
                     {
+                        b = hits[k].collider.GetComponent<Barier>();
                         hasWallOnPath = true;
                         break;
                     }
                 }
-
-                if (!hasWallOnPath)
+                tileMap[j, i] = Instantiate(tile, new Vector2(position[0], position[1]), Quaternion.identity);
+                if (hasWallOnPath)
                 {
-                    tileMap[j, i] = Instantiate(tile, new Vector2(position[0], position[1]), Quaternion.identity);
-                    tileMap[j, i].GetComponent<ToxicZoneTile>().parent = gameObject;
+                    Color c = tileMap[j, i].GetComponent<SpriteRenderer>().color;
+                    c.a = b.newAlpha;
+                    tileMap[j, i].GetComponent<ToxicZoneTile>().damage -= b.minusDmgValue;
+                    tileMap[j, i].GetComponent<SpriteRenderer>().color = c;
                 }
+                
 
                 position[0] += tileSize;
             }

@@ -4,34 +4,15 @@ using UnityEngine;
 
 public class ToxicZoneTile : MonoBehaviour
 {
-    public float damage = 1;
+    public float damage = .1f;
 
-    public GameObject parent;
-
-    private IEnumerator coroutine;
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            StopCoroutine(coroutine);
-        }
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            coroutine = Damage(collision.gameObject);
-            StartCoroutine(coroutine);
+            collision.GetComponent<Player>().GetDamage(damage);
         }
     }
-    private IEnumerator Damage(GameObject gameObject)
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(0.1f);
-            gameObject.GetComponent<Player>().GetDamage(damage);
-        }
-    }
+    
 
 }

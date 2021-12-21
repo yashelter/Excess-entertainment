@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2242096207932407089}
-  - component: {fileID: 2242096207932407095}
   - component: {fileID: 2242096207932407088}
   - component: {fileID: 2242096207932407091}
   - component: {fileID: 2242096207932407090}
   - component: {fileID: 3571506772733381961}
+  - component: {fileID: 2242096207932407095}
   m_Layer: 0
   m_Name: Death zone
   m_TagString: ToxicZoneTile
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2242096207932407092}
-  m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.59, y: -4.91, z: 1.17}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1.06}
   m_ConstrainProportionsScale: 0
@@ -36,19 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2242096207932407095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2242096207932407092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 324a161361ff6b640beb326bd2cb8149, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!61 &2242096207932407088
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -73,7 +60,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!50 &2242096207932407091
 Rigidbody2D:
@@ -137,7 +124,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 952baf2d15d074c4f91f7c5b343e2303, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 98aef0ee624d6d547885c60ab33477e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -161,4 +148,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  parent: {fileID: 0}
+--- !u!114 &2242096207932407095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2242096207932407092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324a161361ff6b640beb326bd2cb8149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
