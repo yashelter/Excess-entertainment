@@ -1938,6 +1938,14 @@ PrefabInstance:
       propertyPath: changePosPlayer.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5156885892371255683, guid: d6cb70fa96b2e4844ae50c9bceadb229, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.383
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156885892371255683, guid: d6cb70fa96b2e4844ae50c9bceadb229, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.677
+      objectReference: {fileID: 0}
     - target: {fileID: 6689389777519469510, guid: d6cb70fa96b2e4844ae50c9bceadb229, type: 3}
       propertyPath: changePosCamera.x
       value: 16
@@ -1961,60 +1969,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2150085916985341192, guid: d6cb70fa96b2e4844ae50c9bceadb229, type: 3}
   m_PrefabInstance: {fileID: 473774432186551642}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &6944075539518039340
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6944075539476640512, guid: def8d09b6101eeb439c74c9edb0a5d7b, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6944075539476640512, guid: def8d09b6101eeb439c74c9edb0a5d7b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6944075539476640512, guid: def8d09b6101eeb439c74c9edb0a5d7b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6944075539476640512, guid: def8d09b6101eeb439c74c9edb0a5d7b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6944075539476640512, guid: def8d09b6101eeb439c74c9edb0a5d7b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6944075539476640512, guid: def8d09b6101eeb439c74c9edb0a5d7b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6944075539476640512, guid: def8d09b6101eeb439c74c9edb0a5d7b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6944075539476640512, guid: def8d09b6101eeb439c74c9edb0a5d7b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6944075539476640512, guid: def8d09b6101eeb439c74c9edb0a5d7b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6944075539476640512, guid: def8d09b6101eeb439c74c9edb0a5d7b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6944075539476640512, guid: def8d09b6101eeb439c74c9edb0a5d7b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6944075539476640517, guid: def8d09b6101eeb439c74c9edb0a5d7b, type: 3}
-      propertyPath: m_Name
-      value: RoomController
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: def8d09b6101eeb439c74c9edb0a5d7b, type: 3}

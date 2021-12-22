@@ -25,7 +25,7 @@ public class Player : Entity // класс игрока
         // должна быть логика влияния предметов на статы? или решить по другому
         Move(input);
         if (Input.GetKey(KeyCode.Space) && IsSlided) Slide();
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) && IsSlided)
         {
             StartAttack(); // в аниматоре нужно остановить атаку, работает на входе обектов в зону поражения
                            // поэтому каждого задамажим ровно 1 раз, во время атаки фризить поворот(и движения наверно тоже)
