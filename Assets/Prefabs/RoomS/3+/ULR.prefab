@@ -4097,7 +4097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58319f14e526ca34db09e5eac8d409f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changePosPlayer: {x: 0, y: -2, z: 0}
+  changePosPlayer: {x: 0, y: -3, z: 0}
   changePosCamera: {x: 0, y: -8, z: 0}
 --- !u!1 &6684722995553230988
 GameObject:
