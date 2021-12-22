@@ -1837,6 +1837,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomAllDoors
       objectReference: {fileID: 0}
+    - target: {fileID: 5156885892371255692, guid: d6cb70fa96b2e4844ae50c9bceadb229, type: 3}
+      propertyPath: changePosCamera.x
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6689389777519469510, guid: d6cb70fa96b2e4844ae50c9bceadb229, type: 3}
       propertyPath: changePosCamera.x
       value: 16
