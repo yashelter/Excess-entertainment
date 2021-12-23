@@ -5,6 +5,10 @@ using UnityEngine;
 public class Enemy : Entity
 {
     public EnemyType ThisType;
+    public EntityWeapon ThisWeapon;
+    public GameObject RadiationGenerator;
+    public float radiationTimer = 4f;
+
     private Transform playerTransform;
     private Transform thisTransform;
     SpriteRenderer spriteRenderer;
@@ -15,6 +19,7 @@ public class Enemy : Entity
     public float stopTime = 0f;
     private float maxRange;
     public float currRange = 0f;
+
     public enum EnemyType
     {
         katakirauva, shooter, stayer
@@ -71,5 +76,24 @@ public class Enemy : Entity
         if (to[1] < thisTransform.position.y) direction[1] *= -1;
 
         Move(direction);
+    }
+    public void ActivateDamageRadious()
+    {
+        ThisWeapon.StartAttack();
+    }
+    public void DeActivateDamageRadious()
+    {
+        ThisWeapon.EndAttack();
+    }
+    public void UnderToxic()
+    { 
+        if(radiationTimer > 0)
+        {
+            radiationTimer -= Time.deltaTime;
+        }
+        else
+        {
+            RadiationGenerator.SetActive(true);
+        }
     }
 }

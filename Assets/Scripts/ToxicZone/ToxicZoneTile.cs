@@ -12,6 +12,10 @@ public class ToxicZoneTile : MonoBehaviour
         {
             collision.GetComponent<Player>().GetDamage(damage);
         }
+        if (collision.CompareTag("Enemy"))
+        {
+            collision.GetComponent<Enemy>().UnderToxic();
+        }
     }
     
 

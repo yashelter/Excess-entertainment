@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ToxicZoneCore : MonoBehaviour
 {
-    
     public GameObject tile;
     public Transform zoneStart;
 
@@ -37,7 +36,8 @@ public class ToxicZoneCore : MonoBehaviour
     public void GenerateZone()
     {
         float[] positionStart = { zoneStart.position.x - (size / 2 * tileSize), zoneStart.position.y + (size / 2 * tileSize) };
-        float[] position = (float[]) positionStart.Clone();
+
+        float[] position = (float[])positionStart.Clone();
         for (int j = 0; j < size; j++)
         {
             for (int i = 0; i < size; i++)
@@ -58,19 +58,33 @@ public class ToxicZoneCore : MonoBehaviour
                 if (hasWallOnPath)
                 {
                     Color c = tileMap[j, i].GetComponent<SpriteRenderer>().color;
-                    c.a = b.newAlpha;
+                    c.a -= b.minusAlthaValue;
                     tileMap[j, i].GetComponent<ToxicZoneTile>().damage -= b.minusDmgValue;
                     tileMap[j, i].GetComponent<SpriteRenderer>().color = c;
                 }
-                
+
 
                 position[0] += tileSize;
             }
             position[1] = position[1] - tileSize;
             position[0] = positionStart[0];
         }
-        
+        int x = (size - 1) / 2;
+        for (int j = 0; j < size; j++)
+        {
+            for (int i = 0; i < size; i++)
+            {
+                int d = Mathf.Max(Mathf.Abs(x - i), Mathf.Abs(x - j));
+                Color c = tileMap[j, i].GetComponent<SpriteRenderer>().color;
+                c.a -= (size / 2 + 1f) / 10 * d;
+                
+                tileMap[j, i].GetComponent<ToxicZoneTile>().damage *= (1 - (size / 2 + 1f) / 10 * d);
+                tileMap[j, i].GetComponent<SpriteRenderer>().color = c;
+                
+            }
+        }
     }
+
     public void ClearZone()
     {
         for (int j = 0; j < size; j++)

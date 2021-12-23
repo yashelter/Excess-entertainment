@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Barier : MonoBehaviour
 {
-    public float newAlpha;
-    public int minusDmgValue;
+    public float minusAlthaValue;
+    public float minusDmgValue;
 }
