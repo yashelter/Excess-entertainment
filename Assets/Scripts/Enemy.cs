@@ -14,9 +14,9 @@ public class Enemy : Entity
     SpriteRenderer spriteRenderer;
 
     public HealthBarEnemy Healthbar;
-
+    public float[] to;
     private float maxStopTime = 3f;
-    public float stopTime = 0f;
+    public float stopTime = 1f;
     private float maxRange;
     public float currRange = 0f;
 
@@ -33,6 +33,7 @@ public class Enemy : Entity
         maxRange = stats.speed * 3;
         stats.Health = stats.MaxHealth;
         Healthbar.SetHealth(stats.Health, stats.MaxHealth);
+        to = new float[] { playerTransform.position.x, playerTransform.position.y };
     }
 
     public override void GetDamage(float x)
@@ -42,36 +43,35 @@ public class Enemy : Entity
     }
     protected void Update()
     {
-        if(ThisType == EnemyType.katakirauva)
+        if (ThisType == EnemyType.katakirauva)
         {
-            if(stopTime < 1.8f && stopTime > 0)
+            if (stopTime < 1.8f && stopTime > 0)
             {
                 animations.SetBool("isRunning", true);
             }
             if (stopTime > 0)
             {
                 stopTime -= Time.deltaTime;
+                to = new float[] { playerTransform.position.x, playerTransform.position.y };
             }
             else
             {
                 KatakirauvaEngine();
             }
-            
+
         }
-        
+
     }
     public void KatakirauvaEngine()
     {
-        float[] to = { playerTransform.position.x, playerTransform.position.y };
         float[] direction = { 1, 1 };
         currRange += stats.speed * Time.deltaTime * 2;
         if (currRange > maxRange)
         {
             currRange = 0;
             stopTime = maxStopTime;
-            direction = new float[] {0,0};
+            direction = new float[] { 0, 0 };
         }
-        
         if (to[0] < thisTransform.position.x) direction[0] *= -1;
         if (to[1] < thisTransform.position.y) direction[1] *= -1;
 
@@ -86,8 +86,8 @@ public class Enemy : Entity
         ThisWeapon.EndAttack();
     }
     public void UnderToxic()
-    { 
-        if(radiationTimer > 0)
+    {
+        if (radiationTimer > 0)
         {
             radiationTimer -= Time.deltaTime;
         }
@@ -95,5 +95,14 @@ public class Enemy : Entity
         {
             RadiationGenerator.SetActive(true);
         }
+    }
+    protected override void Die()
+    {
+        Alive = false;
+        animations.SetTrigger("Die");
+    }
+    protected void Destroy()
+    {
+        Destroy(gameObject);
     }
 }

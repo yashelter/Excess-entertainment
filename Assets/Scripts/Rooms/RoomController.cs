@@ -20,7 +20,7 @@ public class RoomController : MonoBehaviour
     }
     private void SpawnEnemies()
     {
-        int cnt = Random.Range(1, maxEnemyValue);
+        int cnt = Random.Range(1, maxEnemyValue+1);
         for (int i = 0; i < cnt; i++)
         {
             Instantiate(katakirauva, gameObject.transform.position, Quaternion.identity);
