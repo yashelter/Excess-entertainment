@@ -12,7 +12,7 @@ public class PlayerWeapon : MonoBehaviour
         hitZone = GetComponent<BoxCollider2D>();
         audioSource = GetComponent<AudioSource>();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {

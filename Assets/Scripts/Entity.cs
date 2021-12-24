@@ -19,7 +19,7 @@ public class Entity : MonoBehaviour // базовый класс всего
 
     public bool IsSlided { get => isSlided; set => isSlided = value; }
     private float slideBoost = 1.3f;
-    
+    protected bool Alive = true;
 
     protected virtual void Start()
     {
@@ -33,7 +33,8 @@ public class Entity : MonoBehaviour // базовый класс всего
     }
 
     protected virtual void Move(float[] direction)
-    {   
+    {
+        if (!Alive) return;
         if (!gameManager.gameActive) return;
         if (((direction[0] < 0 && !isRotated) || (direction[0] > 0 && isRotated))) Flip();
         if(slideTimer > 0) slideTimer -= Time.deltaTime;
@@ -63,7 +64,8 @@ public class Entity : MonoBehaviour // базовый класс всего
     }
     protected virtual void Die() => Destroy(gameObject);
     public virtual void GetDamage(float damage) 
-    { 
+    {
+        if (!Alive) return;
         stats.Health = stats.Health - damage; 
         if (stats.Health == 0)
         {
