@@ -5,6 +5,13 @@ public class InGameManager : MonoBehaviour
     public bool gameActive = true;
     public GameObject PausePannel;
     public GameObject ActivePanel;
+    public void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            ClickPauseGame();
+        }
+    }
     public void Start()
     {
         PausePannel.SetActive(false);
