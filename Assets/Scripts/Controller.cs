@@ -5,6 +5,7 @@ using UnityEngine;
 public class Controller : Entity
 {
     public float speed = 2f;
+    public Weapon playerWeapon;
 
     public BetterButton left, right, up, slide;
 
@@ -40,8 +41,19 @@ public class Controller : Entity
     }
     public void levelUP()
     {
-
+        stats.ourXP = 0;
+        stats.ourLevel++;
+        // Maxims's formuls
+        stats.maxHP = (int) (stats.maxHP * 1.05f);
+        stats.HP = stats.maxHP;
+        stats.needXP = (int)(stats.needXP * 1.25f);
+        animations.SetTrigger("Level Up");
     }
-    
+
+    public override void Attack()
+    {
+        base.Attack();
+        playerWeapon.TriggerAttack();
+    }
 
 }

@@ -23,7 +23,6 @@ public class RoomSpawn : MonoBehaviour
     private void Start()
     {
         variants = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomVariants>();
-        Debug.Log(variants);
         Destroy(gameObject, waitTime);
         Invoke("Spawn", 0.2f);
     }
@@ -36,7 +35,6 @@ public class RoomSpawn : MonoBehaviour
             return;
         }
         spawned--;
-        Debug.Log(variants);
         if(direction == Direction.Top)
         {
             rand = Random.Range(0, variants.topRooms.Length);

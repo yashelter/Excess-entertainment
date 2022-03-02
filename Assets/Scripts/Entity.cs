@@ -68,12 +68,11 @@ public class Entity : MonoBehaviour
         slideTimer = slideTimerMaxValue;
         stats.speed -= slideBoost;
     }
-    public void Attack()
+    public virtual void Attack()
     {
         // there must be logic
         animations.SetTrigger("Attack");
     }
-    
 
 
 }
