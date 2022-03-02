@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Controller : Entity
 {
+    public HealthBar healthBar;
+
     public float speed = 2f;
 
     public BetterButton left, right, up, slide;
 
     protected override void Start()
     {
-        base.Start(); 
+        base.Start();
+        healthBar = FindObjectOfType<HealthBar>();
+        healthBar.SetMaxHealth(100);
     }
     public void Update()
     {
@@ -40,8 +44,14 @@ public class Controller : Entity
     }
     public void levelUP()
     {
-
+        stats.ourXP = 0;
+        stats.ourLevel++;
+        // Maxims's formules
+        stats.maxHP = (int) (stats.maxHP * 1.05f);
+        stats.HP = stats.maxHP;
+        stats.needXP = (int)(stats.needXP * 1.25f);
+        animations.SetTrigger("Level Up");
     }
-    
+
 
 }

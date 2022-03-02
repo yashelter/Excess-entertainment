@@ -73,7 +73,6 @@ public class Entity : MonoBehaviour
         // there must be logic
         animations.SetTrigger("Attack");
     }
-    
 
 
 }
