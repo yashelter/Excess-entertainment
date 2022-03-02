@@ -2,24 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
+
 public class Stats
 {
-    
-    public int maxHealth;
-    public float health;
-    public int defend;
-    public float speed;
-
-    public int MaxHealth { get => maxHealth; set => maxHealth = value; }
-    public float Health { get => health; set {  if (value < 0) health = 0; else if (value < MaxHealth) health = value; else health = maxHealth; } }
-
-
-    public float getHealth() => Health;
-
-    //public int[] getStats() => new int[] { Health, defend, speed }; // получаем массив статов
-        
-    
-    
+    public float speed = 8f;
+    public int maxHP = 100;
+    public int HP = 100;
+    public int ourXP = 0;
+    public int ourLevel = 0;
+    public int needXP = 100;
 
 }

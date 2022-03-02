@@ -2,49 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour // базовый класс всего
+public class Entity : MonoBehaviour 
 {
-   
-    public Transform entityTransform { get; private set; }
-    public Rigidbody2D entityRidgidBody { get; private set; }
 
-    public Stats stats;
+    public Transform entityTransform { get; protected set; }
+    public Rigidbody2D entityRidgidBody { get; protected set; }
+
     protected Animator animations;
-    private InGameManager gameManager;
 
-    private bool isSlided;
-    private bool isRotated;
+    private bool isSlided = false;
+    private bool isRotated = false;
     private float slideTimer = 0f;
-    private float slideTimerMaxValue = 1f; 
+    private float slideTimerMaxValue = 1f;
 
     public bool IsSlided { get => isSlided; set => isSlided = value; }
-    private float slideBoost = 1.3f;
+   
     protected bool Alive = true;
+
+    public float slideBoost = 1.3f;
+    public Stats stats;
 
     protected virtual void Start()
     {
         entityTransform = GetComponent<Transform>();
-        gameManager = FindObjectOfType<InGameManager>();
-        animations = GetComponent<Animator>();
         entityRidgidBody = GetComponent<Rigidbody2D>();
-       // stats = new Stats(); // должны ставиться сохранённые данные
-        isRotated = false;
-        IsSlided = true;
+        animations = GetComponent<Animator>();
+        stats = new Stats();
     }
 
-    protected virtual void Move(float[] direction)
-    {
-        if (!Alive) return;
-        if (!gameManager.gameActive) return;
-        if (((direction[0] < 0 && !isRotated) || (direction[0] > 0 && isRotated))) Flip();
-        if(slideTimer > 0) slideTimer -= Time.deltaTime;
-        //entityRidgidBody.velocity = new Vector3(direction[0] * stats.speed, direction[1] * stats.speed, 0);
-        entityTransform.Translate(new Vector3(direction[0] * stats.speed * Time.deltaTime * .5f, direction[1] * stats.speed * Time.deltaTime * .5f, 0));
-        MovementAnimations(direction);
-    }
     protected void MovementAnimations(float[] direction)
     {
-        if (direction[0] != 0 || direction[1] != 0)
+        if (direction[0] != 0)
         {
             animations.SetBool("isRunning", true);
         }
@@ -52,6 +40,12 @@ public class Entity : MonoBehaviour // базовый класс всего
         {
             animations.SetBool("isRunning", false);
         }
+        if(direction[1] > 0)
+        {
+            animations.SetTrigger("Jump");
+
+        }
+        if (direction[0] > 0 && isRotated || direction[0] < 0 && !isRotated) Flip();
     }
     protected virtual void Flip()
     {
@@ -62,28 +56,23 @@ public class Entity : MonoBehaviour // базовый класс всего
     {
         if (slideTimer <= 0) animations.SetTrigger("Slide");
     }
-    protected virtual void Die() => Destroy(gameObject);
-    public virtual void GetDamage(float damage) 
+
+    public void StartSlide()
     {
-        if (!Alive) return;
-        stats.Health = stats.Health - damage; 
-        if (stats.Health == 0)
-        {
-            Die();
-        }
-    }
-    public void StartSlide() 
-    { 
         IsSlided = false;
         stats.speed += slideBoost;
     }
-    public void EndSlide() 
+    public void EndSlide()
     {
         IsSlided = true;
         slideTimer = slideTimerMaxValue;
         stats.speed -= slideBoost;
     }
+    public void Attack()
+    {
+        // there must be logic
+        animations.SetTrigger("Attack");
+    }
 
-    
 
 }
