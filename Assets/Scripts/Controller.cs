@@ -6,7 +6,8 @@ public class Controller : Entity
 {
     public float speed = 2f;
 
-    public BetterButton left, right, up, slide, attack;
+    public BetterButton left, right, up, slide;
+
     protected override void Start()
     {
         base.Start(); 
@@ -36,6 +37,10 @@ public class Controller : Entity
         }
         MovementAnimations(new float[] { x, y });
         
+    }
+    public void levelUP()
+    {
+
     }
     
 
