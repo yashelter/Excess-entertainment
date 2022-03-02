@@ -73,6 +73,14 @@ public class Entity : MonoBehaviour
         // there must be logic
         animations.SetTrigger("Attack");
     }
-
+    public virtual void getDamage(int damage)
+    {
+        stats.HealthPoint -= damage;
+        if (stats.HealthPoint <= 0)
+        {
+            Destroy(gameObject); 
+        }
+    }
+   
 
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Controller : Entity
 {
+    public HealthBar healthBar;
+
     public float speed = 2f;
     public Weapon playerWeapon;
 
@@ -11,7 +13,10 @@ public class Controller : Entity
 
     protected override void Start()
     {
-        base.Start(); 
+        base.Start();
+        healthBar = FindObjectOfType<HealthBar>();
+        healthBar.SetMaxHealth(stats.maxHP);
+        healthBar.SetHealth(stats.maxHP);
     }
     public void Update()
     {
@@ -37,23 +42,24 @@ public class Controller : Entity
             entityRidgidBody.velocity = (new Vector3(x * speed, entityRidgidBody.velocity.y, 0));
         }
         MovementAnimations(new float[] { x, y });
-        
+       
     }
     public void levelUP()
     {
         stats.ourXP = 0;
         stats.ourLevel++;
         // Maxims's formuls
-        stats.maxHP = (int) (stats.maxHP * 1.05f);
-        stats.HP = stats.maxHP;
+        stats.maxHP = (int)(stats.maxHP * 1.05f);
+        stats.HealthPoint = stats.maxHP;
         stats.needXP = (int)(stats.needXP * 1.25f);
         animations.SetTrigger("Level Up");
     }
-
     public override void Attack()
     {
         base.Attack();
         playerWeapon.TriggerAttack();
     }
+
+
 
 }
