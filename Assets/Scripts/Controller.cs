@@ -11,15 +11,30 @@ public class Controller : Entity
 
     public BetterButton left, right, up, slide;
 
+    public float jumpForce;
+    public int jumps = 2;
+    private int jumpsCount;
+
+    public Transform groundCheck;
+    public LayerMask whatIsGround;
+    public float checkRadius;
+    private bool isGrounded;
+
     protected override void Start()
     {
         base.Start();
         healthBar = FindObjectOfType<HealthBar>();
         healthBar.SetMaxHealth(stats.maxHP);
         healthBar.SetHealth(stats.maxHP);
+        jumpsCount = jumps;
     }
     public void Update()
     {
+        if (isGrounded == true)
+        {
+            jumpsCount = jumps;
+        }
+
         float x = 0, y = 0;
         if (left.isHold)
         {
@@ -35,15 +50,35 @@ public class Controller : Entity
         }
         if (up.isHold)
         {
-            entityRidgidBody.velocity = (new Vector3(x * speed, 8, 0));
+            Jump();
         }
         else
         {
             entityRidgidBody.velocity = (new Vector3(x * speed, entityRidgidBody.velocity.y, 0));
         }
         MovementAnimations(new float[] { x, y });
-       
+        
     }
+
+    void FixedUpdate()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+    }
+
+    public void Jump()
+    {
+        jumpsCount--;
+
+        if (jumpsCount > 0)
+        {
+            entityRidgidBody.velocity = Vector2.up * jumpForce;
+        }    
+        else if (jumpsCount == 0 && isGrounded)
+        {
+            entityRidgidBody.velocity = Vector2.up * jumpForce;
+        }    
+    }    
+
     public void levelUP()
     {
         stats.ourXP = 0;
