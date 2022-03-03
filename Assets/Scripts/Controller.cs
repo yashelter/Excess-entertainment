@@ -11,13 +11,13 @@ public class Controller : Entity
 
     public BetterButton left, right, up, slide;
 
-    public float jumpForce;
+    public float jumpForce = 10;
     public int jumps = 2;
     private int jumpsCount;
 
     public Transform groundCheck;
     public LayerMask whatIsGround;
-    public float checkRadius;
+    public float checkRadius = 0.1f;
     private bool isGrounded;
 
     protected override void Start()
