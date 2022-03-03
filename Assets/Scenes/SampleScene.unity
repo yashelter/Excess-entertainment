@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 88436024}
   - component: {fileID: 88436023}
   - component: {fileID: 88436022}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -691,6 +691,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &327555369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 327555370}
+  m_Layer: 0
+  m_Name: Ground Check
+  m_TagString: Untagged
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &327555370
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327555369}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7, y: -18.6, z: -49.24268}
+  m_LocalScale: {x: 23.615234, y: 15.253906, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1198196675}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &473292604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,7 +1277,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.119, y: -1.632, z: 0}
   m_LocalScale: {x: 0.08, y: 0.08, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 327555370}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1318,7 +1349,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f3b89d1260c742d4a996dc7bd5a41ca0, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -1362,12 +1393,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slideBoost: 1.3
+  healthBar: {fileID: 0}
   speed: 8
   left: {fileID: 15266729}
   right: {fileID: 1440818752}
   up: {fileID: 1416846073}
   slide: {fileID: 473292606}
-  attack: {fileID: 0}
+  jumpForce: 10
+  jumps: 3
+  groundCheck: {fileID: 327555370}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  checkRadius: 0.1
 --- !u!95 &1198196680
 Animator:
   serializedVersion: 3
