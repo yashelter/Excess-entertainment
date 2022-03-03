@@ -5,11 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - ToxicGenerator
-  - ToxicZoneTile
   - Wall
   - Rooms
   - RoomPoint
+  - enemy
   layers:
   - Default
   - TransparentFX
