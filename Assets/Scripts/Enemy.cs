@@ -10,6 +10,16 @@ public class Enemy : Entity
     public bool way = true;
     public int damage = 10;
 
+    public HealthBarEnemy Healthbar;
+    public float Hitpoints;
+    public float MaxHitpoints = 5;
+
+    protected override void Start()
+    {
+        Hitpoints = MaxHitpoints;
+        Healthbar.SetHealth(Hitpoints, MaxHitpoints);
+    }
+
     public void FixedUpdate()
     {
         if (way)
