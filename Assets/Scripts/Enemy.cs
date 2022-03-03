@@ -8,6 +8,7 @@ public class Enemy : Entity
     public Transform rightPoint;
 
     public bool way = true;
+    public int damage = 10;
 
     public void FixedUpdate()
     {
@@ -17,6 +18,7 @@ public class Enemy : Entity
             if (entityTransform.position.x < leftPoint.position.x)
             {
                 way = false;
+                Flip();
             }
         }
         else
@@ -25,8 +27,17 @@ public class Enemy : Entity
             if (entityTransform.position.x > rightPoint.position.x)
             {
                 way = true;
+                Flip();
             }
         }
         
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Attack();
+            collision.GetComponent<Controller>().getDamage(damage);
+        }
     }
 }

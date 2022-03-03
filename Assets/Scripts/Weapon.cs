@@ -6,6 +6,11 @@ public class Weapon : MonoBehaviour
 {
     public bool isAttacking = false;
     public List<GameObject> damaged = new List<GameObject>();
+    public Controller player;
+    public void Start()
+    {
+        player = FindObjectOfType<Controller>();
+    }
     public void TriggerAttack()
     {
         StopAllCoroutines();
@@ -25,7 +30,7 @@ public class Weapon : MonoBehaviour
         if (isAttacking && collision.CompareTag("enemy") && !damaged.Contains(collision.gameObject))
         {
             damaged.Add(collision.gameObject);
-            Debug.Log("giving damage");
+            collision.GetComponent<Enemy>().getDamage(player.stats.damage);
         }
     }
 }

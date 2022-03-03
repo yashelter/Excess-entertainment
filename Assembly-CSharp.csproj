@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CutSceneManager.cs" />
-    <Compile Include="Assets\Scripts\Healt\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\RoomSpawner.cs" />
     <Compile Include="Assets\Scripts\RoomSpawn.cs" />
     <Compile Include="Assets\Scripts\Entity.cs" />

@@ -14,7 +14,7 @@ public class Stats
         get { return healthPoint; }
         set { if (value < 0) healthPoint = 0; else healthPoint = value; }
     }
-    
+    public int damage = 10;
     public int ourXP = 0;
     public int ourLevel = 0;
     public int needXP = 100;

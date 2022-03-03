@@ -59,7 +59,11 @@ public class Controller : Entity
         base.Attack();
         playerWeapon.TriggerAttack();
     }
-
+    public override void getDamage(int damage)
+    {
+        base.getDamage(damage);
+        healthBar.SetHealth(stats.HealthPoint);
+    }
 
 
 }
