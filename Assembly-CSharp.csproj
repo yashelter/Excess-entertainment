@@ -59,17 +59,20 @@
     <Compile Include="Assets\Scripts\CutSceneManager.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\RoomSpawner.cs" />
+    <Compile Include="Assets\Scripts\PauseManager.cs" />
     <Compile Include="Assets\Scripts\RoomSpawn.cs" />
     <Compile Include="Assets\Scripts\Entity.cs" />
     <Compile Include="Assets\Scripts\Stats.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Scripts\BackgroundMover.cs" />
+    <Compile Include="Assets\Scripts\Dialogs.cs" />
     <Compile Include="Assets\Scripts\RoomVariants.cs" />
     <Compile Include="Assets\Scripts\Controller.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
+    <Compile Include="Assets\Scripts\StartSceneManager.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\BetterButton.cs" />
-    <Compile Include="Assets\Scripts\Dialogs.cs" />
+    <Compile Include="Assets\Scripts\End.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

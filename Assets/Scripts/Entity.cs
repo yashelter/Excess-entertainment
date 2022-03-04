@@ -10,12 +10,9 @@ public class Entity : MonoBehaviour
 
     protected Animator animations;
 
-    private bool isSlided = false;
     private bool isRotated = false;
-    private float slideTimer = 0f;
-    private float slideTimerMaxValue = 1f;
+    protected bool isSliding = false;
 
-    public bool IsSlided { get => isSlided; set => isSlided = value; }
    
     protected bool Alive = true;
 
@@ -54,18 +51,17 @@ public class Entity : MonoBehaviour
     }
     protected void Slide()
     {
-        if (slideTimer <= 0) animations.SetTrigger("Slide");
+        if (!isSliding)
+        {
+            isSliding = true;
+            stats.speed += slideBoost;
+            animations.SetTrigger("Slide");
+        }
+        
     }
-
-    public void StartSlide()
+    protected void EndSlide()
     {
-        IsSlided = false;
-        stats.speed += slideBoost;
-    }
-    public void EndSlide()
-    {
-        IsSlided = true;
-        slideTimer = slideTimerMaxValue;
+        isSliding = false;
         stats.speed -= slideBoost;
     }
     public virtual void Attack()

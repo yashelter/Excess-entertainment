@@ -41,15 +41,10 @@ public class MenuManager : MonoBehaviour
         {
             if (asyncLoad.progress >= .9f && !asyncLoad.allowSceneActivation)
             {
-                if (Input.anyKeyDown)
-                {
-                    asyncLoad.allowSceneActivation = true;
-                }
-            }
-
-            else if (asyncLoad.progress >= .8f)
-            {
                 transition.SetTrigger("Start");
+                yield return new WaitForSeconds(1f);
+                asyncLoad.allowSceneActivation = true;
+                
             }
             yield return null;
         }

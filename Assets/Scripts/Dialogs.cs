@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Dialogs : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class Dialogs : MonoBehaviour
     public TextMeshProUGUI text;
     public GameObject UI;
     public GameObject thisDialog;
+    public GameObject fair;
+
     public void Start()
     {
         StartCoroutine(startALL());
@@ -33,7 +36,9 @@ public class Dialogs : MonoBehaviour
     {
         UI.SetActive(false);
         text.text = "";
+        
         yield return new WaitForSeconds(4f);
+
         for (int i = 0; i < replicList.Length; i++)
         {
             string curName = replicList[i].name, curSent = replicList[i].sentense, write = "";
@@ -57,11 +62,15 @@ public class Dialogs : MonoBehaviour
                 text.text = write;
                 yield return new WaitForSeconds(0.033f);
             }
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1f);
         }
-        yield return new WaitForSeconds(4f);
-        UI.SetActive(true);
-        Destroy(thisDialog);
+        yield return new WaitForSeconds(.1f);
+        
+        //UI.SetActive(true);
+        Destroy(fair);
+        //Destroy(thisDialog);
+        yield return new WaitForSeconds(6f);
+        SceneManager.LoadScene(3);
     }
     
 }

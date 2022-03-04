@@ -5,19 +5,20 @@ using UnityEngine;
 public class Controller : Entity
 {
     public HealthBar healthBar;
-
-    public float speed = 2f;
     public Weapon playerWeapon;
-
     public BetterButton left, right, up, slide;
-
-    public float jumpForce = 10;
-    public int jumps = 2;
-    private int jumpsCount;
-
     public Transform groundCheck;
+
     public LayerMask whatIsGround;
+
     public float checkRadius = 0.1f;
+    public float speed = 2f;
+    public float jumpForce = 10;
+
+    public int jumps = 2;
+
+    private int jumpsCount = 2;
+
     private bool isGrounded;
 
     protected override void Start()
@@ -44,13 +45,9 @@ public class Controller : Entity
         {
             x = 1;
         }
-        if (slide.isHold)
+        if (slide.isHold && !isSliding)
         {
             Slide();
-        }
-        if (up.isHold)
-        {
-            Jump();
         }
         else
         {
@@ -67,8 +64,9 @@ public class Controller : Entity
 
     public void Jump()
     {
+        if (isSliding) return;
         jumpsCount--;
-
+        animations.SetTrigger("Jump");
         if (jumpsCount > 0)
         {
             entityRidgidBody.velocity = Vector2.up * jumpForce;
@@ -91,8 +89,11 @@ public class Controller : Entity
     }
     public override void Attack()
     {
-        base.Attack();
-        playerWeapon.TriggerAttack();
+        if (!isSliding)
+        {
+            base.Attack();
+            playerWeapon.TriggerAttack();
+        }
     }
     public override void getDamage(int damage)
     {
