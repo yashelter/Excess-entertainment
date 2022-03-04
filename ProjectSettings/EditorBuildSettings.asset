@@ -6,12 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 90231a611bd36714a96f16f831ce5efd
+    path: Assets/Scenes/Menu.unity
+    guid: 716038aede2a5cd4cb10dc24e25efb80
   - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: f66c05cacc30fdc49b9a30a89dfd71a8
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/StartEffect.unity
+    guid: b06098da4f7c39343b5aef0f74564e5a
+  - enabled: 1
+    path: Assets/Scenes/Pre-Game.unity
+    guid: 67237637e9d90974ea06b6c7e39eff31
+  - enabled: 1
+    path: Assets/Scenes/FinallyGame.unity
+    guid: 58621104f8feb17418436c7064fadede
+  - enabled: 1
+    path: Assets/Scenes/BossFight.unity
+    guid: c2a33f21966e55141b7b7d8833152fb3
   m_configObjects: {}
