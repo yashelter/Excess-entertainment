@@ -5,6 +5,7 @@ using UnityEngine;
 public class Controller : Entity
 {
     public HealthBar healthBar;
+    public LevelProgress levelProgress;
     public Weapon playerWeapon;
     public BetterButton left, right, up, slide;
     public Transform groundCheck;
@@ -13,10 +14,10 @@ public class Controller : Entity
 
     public float checkRadius = 0.1f;
     public float speed = 2f;
+
     public float jumpForce = 10;
 
     public int jumps = 2;
-
     private int jumpsCount = 2;
 
     private bool isGrounded;
@@ -27,6 +28,8 @@ public class Controller : Entity
         healthBar = FindObjectOfType<HealthBar>();
         healthBar.SetMaxHealth(stats.maxHP);
         healthBar.SetHealth(stats.maxHP);
+        //levelProgress.SetOurProgress(stats.needXP);
+        //levelProgress.SetProgress(stats.ourXP);        
         jumpsCount = jumps;
     }
     public void Update()
@@ -77,7 +80,7 @@ public class Controller : Entity
         }    
     }    
 
-    public void levelUP()
+    public void LevelUP()
     {
         stats.ourXP = 0;
         stats.ourLevel++;
@@ -85,7 +88,7 @@ public class Controller : Entity
         stats.maxHP = (int)(stats.maxHP * 1.05f);
         stats.HealthPoint = stats.maxHP;
         stats.needXP = (int)(stats.needXP * 1.25f);
-        animations.SetTrigger("Level Up");
+        animations.SetTrigger("Level Up"); 
     }
     public override void Attack()
     {
@@ -100,6 +103,5 @@ public class Controller : Entity
         base.getDamage(damage);
         healthBar.SetHealth(stats.HealthPoint);
     }
-
 
 }

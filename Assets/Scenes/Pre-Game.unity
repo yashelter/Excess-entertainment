@@ -226,7 +226,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1757598073}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518489723}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a30bdb4e0a187bd48a38b0ce38932a10, type: 3}
   m_Name: 
@@ -1132,6 +1132,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 19685173036842977, guid: 82a526314b5cbd0449b4c836528885a5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19685173265680412, guid: 82a526314b5cbd0449b4c836528885a5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19685173265680412, guid: 82a526314b5cbd0449b4c836528885a5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5740014872651020618, guid: 82a526314b5cbd0449b4c836528885a5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1826,6 +1838,10 @@ PrefabInstance:
       propertyPath: slide
       value: 
       objectReference: {fileID: 1167109076}
+    - target: {fileID: 7574479361957845118, guid: e209ae296467be847b1ffefc216c19b1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7574479361957845119, guid: e209ae296467be847b1ffefc216c19b1, type: 3}
       propertyPath: m_Material
       value: 

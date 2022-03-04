@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinallyGame.unity
     guid: 58621104f8feb17418436c7064fadede
+  - enabled: 1
+    path: Assets/Scenes/BossFight.unity
+    guid: c2a33f21966e55141b7b7d8833152fb3
   m_configObjects: {}

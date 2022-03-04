@@ -17,7 +17,7 @@ public class RoomSpawn : MonoBehaviour
 
     private RoomVariants variants;
     private int rand;
-    private static int spawned = 4; // кол-во комнат
+    private static int spawned = 8; // кол-во комнат
     private float waitTime = 3f;
 
     private void Start()
@@ -56,12 +56,12 @@ public class RoomSpawn : MonoBehaviour
             Instantiate(variants.leftRooms[rand], transform.position, variants.leftRooms[rand].transform.rotation);
         }   
     }
-    //private void OnTriggerStay2D(Collider2D other)
-    //{
-    //    if (other.CompareTag("RoomPoint"))
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("RoomPoint"))
+        {
+            Destroy(gameObject);
+        }
+    }
 
 }
